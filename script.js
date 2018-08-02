@@ -1,11 +1,3 @@
-
-// Add a button click handler that 
-    // - takes what is in the input, 
-    // - removes it from the input and 
-    // - pushes it into the list.
-// write the code that renders the list
-
-
 class List extends React.Component {
     constructor(props){
         super(props)
@@ -28,11 +20,17 @@ class List extends React.Component {
 
     clickEvent(event) {
         let currentState = this.state;
-        currentState.list.push(this.state.word);
-        this.state.word = '';
-        console.log("push", currentState.list);
+        let wordArr = this.state.word.split('');
+            if (wordArr.length > 140) {
+                alert('too many typings!');
+                return;
+            } else {
+                currentState.list.push(this.state.word);
+                this.state.word = '';
+                console.log("push", currentState.list);
 
-        this.setState(currentState);
+                this.setState(currentState);       
+           }
     }
 
     render() {
